@@ -1,6 +1,7 @@
 {
   "name": "bitly",
   "private": true,
+  "proxy": "http://localhost:3000",
   "dependencies": {
     "react-scripts": "^4.0.3"
   }

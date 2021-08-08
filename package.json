@@ -1,5 +1,7 @@
 {
   "name": "bitly",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "react-scripts": "^4.0.3"
+  }
 }

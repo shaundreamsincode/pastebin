@@ -5,10 +5,8 @@ import './App.css';
 
 const fetchTestDatas = function () {
     axios.get('/api/v1/tests', { headers: { "Access-Control-Allow-Origin": "http://localhost:3000" }}).then((response) => {
-        debugger;
         console.log(response.data);
     })
-      // .catch((error) => { console.log("Error while fetching test datas", error); })
 }
 
 function App() {

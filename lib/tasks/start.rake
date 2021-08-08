@@ -1,7 +1,3 @@
 namespace :start do
-  task :development do
-    exec 'heroku local -f Procfile.dev'
-  end
+  exec 'foreman start -p 3000'
 end
-desc 'Start development server'
-task :start => 'start:development'

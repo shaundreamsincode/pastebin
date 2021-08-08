@@ -4,11 +4,10 @@ import axios from 'axios';
 import './App.css';
 
 const fetchTestDatas = function () {
-    axios.get({url: '/api/v1/tests', headers: { "Access-Control-Allow-Origin": "http://localhost:3000" }})
-      .then(res => res.json())
-      .then((response) => { console.log("Test datas response", response); }).catch((error) => {
-          debugger;
-  })
+    axios.get('/api/v1/tests', { headers: { "Access-Control-Allow-Origin": "http://localhost:3000" }}).then((response) => {
+        debugger;
+        console.log(response.data);
+    })
       // .catch((error) => { console.log("Error while fetching test datas", error); })
 }
 

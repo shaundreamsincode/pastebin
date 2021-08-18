@@ -1,14 +1,18 @@
 module Api
   module V1
     class DocumentsController < ApiController
-      def show
-        @document = Document.find(params[:id])
-        render plain: { body: @document.body }
+      def index
+        @document = Document.find_by!(slug: params[:slug])
+        render json: { body: @document.body }
       end
 
       def create
-        @document = Document.create(body: document_params[:body])
-        render json: { body: params[:body], id: @document.id }
+        @document = Document.create(
+          body: document_params[:body],
+          slug: SecureRandom.uuid
+        )
+
+        render json: { body: params[:body], slug: @document.slug }
       end
 
       private

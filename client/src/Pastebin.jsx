@@ -3,7 +3,7 @@ import axios from "axios";
 
 const Pastebin = () => {
     const [body, setBody] = useState("");
-    const [documentID, setDocumentID] = useState("");
+    const [documentSlug, setDocumentSlug] = useState("");
 
     const onSubmit = () => {
         const url = `/api/v1/documents`;
@@ -12,7 +12,7 @@ const Pastebin = () => {
             {body: body},
             {headers: {"Access-Control-Allow-Origin": "*" }}
         ).then((response) => {
-            setDocumentID(response.data.id);
+            setDocumentSlug(response.data.slug);
         })
     }
 
@@ -26,13 +26,13 @@ const Pastebin = () => {
         </h1>
 
         {
-            !!documentID && <div>
-                Document successfully created.  Document ID is { documentID }
+            !!documentSlug && <div>
+                Document successfully created.  Document ID is { documentSlug }
             </div>
         }
 
         {
-            !documentID &&
+            !documentSlug &&
                 <div>
                     <h3>Please put in your text</h3>
 

@@ -14,6 +14,7 @@ ActiveRecord::Schema.define(version: 2021_08_08_221211) do
 
   create_table "documents", force: :cascade do |t|
     t.text "body"
+    t.text "slug"
   end
 
   create_table "foos", force: :cascade do |t|

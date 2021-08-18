@@ -3,24 +3,17 @@ import axios from "axios";
 
 const Pastebin = () => {
     const [body, setBody] = useState("");
-    const [created, setCreated] = useState(false);
-    const [documentURL, setDocumentURL] = useState("");
-
-    // const fetchTestDatas = function () {
-    //     axios.get({url: '/api/v1/tests', headers: { "Access-Control-Allow-Origin": "http://localhost:3000" }})
-    //         .then(res => res.json())
-    //         .then((response) => { console.log("Test datas response", response); }).catch((error) => {
-    //         debugger;
-    //     })}
-
+    const [documentID, setDocumentID] = useState("");
 
     const onSubmit = () => {
-        const url = `/documents`;
+        const url = `/api/v1/documents`;
         axios.post(
             url,
             {body: body},
             {headers: {"Access-Control-Allow-Origin": "*" }}
-        )
+        ).then((response) => {
+            setDocumentID(response.data.id);
+        })
     }
 
     const onBodyChange = (event) => {
@@ -33,13 +26,13 @@ const Pastebin = () => {
         </h1>
 
         {
-            created && <div>
-                Document successfully created.
+            !!documentID && <div>
+                Document successfully created.  Document ID is { documentID }
             </div>
         }
 
         {
-            !created &&
+            !documentID &&
                 <div>
                     <h3>Please put in your text</h3>
 
